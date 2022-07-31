@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("ExpLaboral")
-@CrossOrigin (origins = "http://localhost:4200")
+@CrossOrigin (origins = "https://argentina-programa-front.web.app")
 public class ExpLaboralController {
   @Autowired 
   ImpExpLaboralService impExpLaboralService;
@@ -51,26 +52,15 @@ public class ExpLaboralController {
   }
   
   
-  @PutMapping("/update/{id}")
-  public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExpLaboral dtoexp) { 
-      //validamos si ya existe el ID
-      if(!impExpLaboralService.existsById(id))
-          return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
-      //compara nombre de experiencias
-      if(impExpLaboralService.existsByNombreE(dtoexp.getNombreE()) && impExpLaboralService.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
-      return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
-      //No puede estar vacio
-      if(StringUtils.isBlank(dtoexp.getNombreE()))
-          return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
-      
-       ExpLaboral explaboral = impExpLaboralService.getOne(id).get();
-       explaboral.setNombreE(dtoexp.getNombreE());
-       explaboral.setDescripcionE((dtoexp.getDescripcionE()));
-       
-      impExpLaboralService.save(explaboral);
-      return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
-  }
-  
+ @GetMapping("/detail/{id}")
+    public ResponseEntity<ExpLaboral> getById(@PathVariable("id") int id){
+        if(!impExpLaboralService.existsById(id))
+            return new ResponseEntity(new Mensaje("no existe"), HttpStatus.NOT_FOUND);
+        ExpLaboral experiencia = impExpLaboralService.getOne(id).get();
+        return new ResponseEntity(experiencia, HttpStatus.OK);
+    }
+    
+  @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         //validamos si existe el ID
         if(!impExpLaboralService.existsById(id))
@@ -79,5 +69,26 @@ public class ExpLaboralController {
         impExpLaboralService.delete(id);
         
         return new ResponseEntity(new Mensaje("Experiencia eliminada"), HttpStatus.OK);
+    }
+    
+    @PutMapping("/update/{id}")
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExpLaboral dtoexp){
+        //Validamos si existe el ID
+        if(!impExpLaboralService.existsById(id))
+            return new ResponseEntity(new Mensaje("El ID no existe"), HttpStatus.BAD_REQUEST);
+        //Compara nombre de experiencias
+        if(impExpLaboralService.existsByNombreE(dtoexp.getNombreE()) && impExpLaboralService.getByNombreE(dtoexp.getNombreE()).get().getId() != id)
+            return new ResponseEntity(new Mensaje("Esa experiencia ya existe"), HttpStatus.BAD_REQUEST);
+        //No puede estar vacio
+        if(StringUtils.isBlank(dtoexp.getNombreE()))
+            return new ResponseEntity(new Mensaje("El nombre es obligatorio"), HttpStatus.BAD_REQUEST);
+        
+        ExpLaboral experiencia = impExpLaboralService.getOne(id).get();
+        experiencia.setNombreE(dtoexp.getNombreE());
+        experiencia.setDescripcionE((dtoexp.getDescripcionE()));
+        
+        impExpLaboralService.save(experiencia);
+        return new ResponseEntity(new Mensaje("Experiencia actualizada"), HttpStatus.OK);
+             
     }
 }

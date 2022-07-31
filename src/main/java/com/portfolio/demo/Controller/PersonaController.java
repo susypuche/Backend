@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://argentina-programa-front.web.app")
 public class PersonaController {
     @Autowired IPersonaService ipersonaService;
     
-    @GetMapping ("personas/traer")
+    @GetMapping ("/personas/traer")
     public List<Persona> getPersona(){
         return ipersonaService.getPersona();
     }
@@ -45,12 +45,14 @@ public class PersonaController {
     public Persona editPersona(@PathVariable Long id,
                 @RequestParam("nombre") String nuevoNombre,
                 @RequestParam("apellido") String nuevoApellido,
-                @RequestParam("img") String nuevoImg){
+                @RequestParam("img") String nuevoImg,
+                @RequestParam("descripcion") String nuevoDescripcion) {
             Persona persona = ipersonaService.findPersona(id);
           
             persona.setNombre(nuevoNombre);
             persona.setApellido(nuevoApellido);
             persona.setImg(nuevoImg);
+            persona.setDescripcion(nuevoDescripcion);
             ipersonaService.savePersona(persona);
             return persona;
             

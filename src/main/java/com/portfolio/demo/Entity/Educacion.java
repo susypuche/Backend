@@ -37,7 +37,7 @@ public class Educacion {
         this.id = id;
     }
 
-    public String getNombredeEducacion() {
+    public String getNombreE() {
         return nombreE;
     }
 

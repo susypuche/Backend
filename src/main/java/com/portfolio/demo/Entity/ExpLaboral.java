@@ -42,7 +42,7 @@ public class ExpLaboral {
         this.id = id;
     }
 
-    public String getNombredeEmpresa() {
+    public String getNombreE() {
         return nombreE;
     }
 

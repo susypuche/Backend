@@ -8,11 +8,11 @@ C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\m
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Service\ImpExpLaboralService.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\Service\RolService.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\jwt\JwtEntryPoint.java
+C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Repository\IEducacionRepository.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\jwt\JwtTokenFilter.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\MainSecurity.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\Dto\LoginUsuario.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Controller\PersonaController.java
-C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Repository\REducacion.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Service\ImpPersonaService.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Entity\Persona.java
 C:\Users\susan\OneDrive\Documentos\PresentacionFinal_SusanaPucheta\Backend\src\main\java\com\portfolio\demo\Security\Controller\Mensaje.java
